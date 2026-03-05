@@ -1,0 +1,1390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smitha Poluri — Engineering Leader · AI/ML & Identity Security</title>
+
+  <meta name="description" content="Smitha Poluri — Staff Engineering Program Manager at BeyondTrust. 20+ years at the intersection of AI/ML systems, identity security, and large-scale program management. Ex-Amazon Senior TPM." />
+  <meta name="keywords" content="Smitha Poluri, Staff Engineering Program Manager, BeyondTrust, Amazon, AI, ML, Identity Security, PAM, Technical Program Manager" />
+  <meta name="author" content="Smitha Poluri" />
+  <meta name="robots" content="index, follow" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://smithapoluri.github.io" />
+  <meta property="og:title" content="Smitha Poluri — Engineering Leader · AI/ML & Identity Security" />
+  <meta property="og:description" content="20+ years building secure, scalable, intelligent systems. Staff EPM at BeyondTrust. Ex-Amazon." />
+
+  <!-- Fonts: Playfair Display (serif headings) + Source Sans 3 (body) + IBM Plex Mono (code/labels) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700&family=Source+Sans+3:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <!-- AOS & Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    /* ═══════════════════════════════════════════
+       TOKENS  —  warm editorial palette
+    ═══════════════════════════════════════════ */
+    :root {
+      /* backgrounds */
+      --cream:    #faf7f2;
+      --cream-2:  #f4efe8;
+      --cream-3:  #ede7dd;
+      --white:    #ffffff;
+
+      /* text */
+      --ink:      #1c1917;
+      --ink-2:    #44403c;
+      --ink-3:    #78716c;
+      --ink-4:    #a8a29e;
+
+      /* accent — warm gold */
+      --gold:     #b07d3a;
+      --gold-lt:  #d4a76a;
+      --gold-bg:  rgba(176,125,58,0.08);
+      --gold-bdr: rgba(176,125,58,0.22);
+
+      /* accent 2 — sage */
+      --sage:     #5a7052;
+      --sage-lt:  #8aaa80;
+      --sage-bg:  rgba(90,112,82,0.08);
+      --sage-bdr: rgba(90,112,82,0.22);
+
+      /* borders & shadows */
+      --bdr:      rgba(28,25,23,0.10);
+      --bdr-2:    rgba(28,25,23,0.06);
+      --shadow:   0 2px 16px rgba(28,25,23,0.07);
+      --shadow-2: 0 8px 40px rgba(28,25,23,0.12);
+
+      /* type */
+      --serif:    'Playfair Display', Georgia, 'Times New Roman', serif;
+      --sans:     'Source Sans 3', system-ui, sans-serif;
+      --mono:     'IBM Plex Mono', monospace;
+
+      --r:        8px;
+      --tr:       0.22s ease;
+    }
+
+    /* ═══ RESET ═══ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body { font-family: var(--sans); background: var(--cream); color: var(--ink); line-height: 1.7; overflow-x: hidden; }
+    a { color: var(--gold); text-decoration: none; transition: color var(--tr); }
+    a:hover { color: var(--sage); }
+    img { max-width: 100%; display: block; }
+    ::selection { background: var(--gold-lt); color: var(--white); }
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: var(--cream); }
+    ::-webkit-scrollbar-thumb { background: var(--ink-4); border-radius: 3px; }
+
+    /* ═══ DARK MODE ═══ */
+    body.dark {
+      --cream:    #18161a;
+      --cream-2:  #1e1b21;
+      --cream-3:  #252229;
+      --white:    #2b2830;
+      --ink:      #f4efe8;
+      --ink-2:    #d3ccc4;
+      --ink-3:    #8e8680;
+      --ink-4:    #5a5654;
+      --bdr:      rgba(244,239,232,0.10);
+      --bdr-2:    rgba(244,239,232,0.06);
+      --shadow:   0 2px 16px rgba(0,0,0,0.32);
+      --shadow-2: 0 8px 40px rgba(0,0,0,0.45);
+      --gold-bg:  rgba(176,125,58,0.14);
+      --gold-bdr: rgba(176,125,58,0.30);
+      --sage-bg:  rgba(90,112,82,0.14);
+      --sage-bdr: rgba(90,112,82,0.30);
+    }
+    body.dark nav { background: rgba(24,22,26,0.94); }
+    body.dark #testimonials { background: #0f0d10; }
+
+    /* ═══ SCROLL PROGRESS ═══ */
+    #scroll-progress {
+      position: fixed; top: 0; left: 0; height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--sage));
+      width: 0%; z-index: 200; pointer-events: none;
+      transition: width 0.08s linear;
+    }
+
+    /* ═══ THEME TOGGLE ═══ */
+    .theme-toggle {
+      background: none; border: 1.5px solid var(--bdr);
+      border-radius: 100px; width: 34px; height: 34px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; color: var(--ink-3); font-size: 0.85rem;
+      transition: border-color var(--tr), color var(--tr), background var(--tr);
+      flex-shrink: 0; margin-left: 0.5rem;
+    }
+    .theme-toggle:hover { border-color: var(--gold); color: var(--gold); background: var(--gold-bg); }
+
+    /* ═══ NAV ═══ */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(250,247,242,0.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--bdr);
+      padding: 0 2.5rem;
+      height: 62px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 1.08rem;
+      font-weight: 700;
+      color: var(--ink);
+      letter-spacing: 0.01em;
+    }
+    .nav-logo span { color: var(--gold); font-style: italic; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+    .nav-links a { font-size: 0.82rem; font-weight: 500; color: var(--ink-3); letter-spacing: 0.04em; text-transform: uppercase; }
+    .nav-links a:hover, .nav-links a.active { color: var(--ink); }
+    .nav-cta {
+      font-size: 0.8rem !important; font-weight: 600 !important;
+      padding: 0.42rem 1.1rem;
+      border: 1.5px solid var(--ink);
+      border-radius: 100px;
+      color: var(--ink) !important;
+      transition: background var(--tr), color var(--tr) !important;
+    }
+    .nav-cta:hover { background: var(--ink); color: var(--cream) !important; }
+    .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--ink); border-radius: 2px; transition: var(--tr); }
+
+    /* ═══ HERO ═══ */
+    #hero {
+      min-height: 100vh;
+      padding: 62px 2.5rem 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 4rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .hero-left { padding: 4rem 0 4rem; }
+
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 0.55rem;
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--gold);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 1.4rem;
+    }
+    .hero-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--gold); }
+
+    .hero-left h1 {
+      font-family: var(--serif);
+      font-size: clamp(2.6rem, 4.5vw, 3.8rem);
+      font-weight: 900;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 1.4rem;
+    }
+    .hero-left h1 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+    .hero-desc {
+      font-size: 1.08rem;
+      color: var(--ink-2);
+      line-height: 1.82;
+      max-width: 520px;
+      margin-bottom: 2.5rem;
+    }
+    .hero-desc strong { color: var(--ink); font-weight: 600; }
+
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
+    .btn-fill {
+      display: inline-flex; align-items: center; gap: 0.55rem;
+      padding: 0.78rem 1.9rem;
+      background: var(--ink);
+      color: var(--cream);
+      font-weight: 600; font-size: 0.92rem; border-radius: 100px;
+      transition: background var(--tr), transform var(--tr);
+    }
+    .btn-fill:hover { background: var(--ink-2); transform: translateY(-1px); color: var(--cream); }
+    .btn-line {
+      display: inline-flex; align-items: center; gap: 0.55rem;
+      padding: 0.78rem 1.9rem;
+      border: 1.5px solid var(--bdr);
+      color: var(--ink-2); font-weight: 500; font-size: 0.92rem; border-radius: 100px;
+      transition: border-color var(--tr), color var(--tr);
+    }
+    .btn-line:hover { border-color: var(--ink); color: var(--ink); }
+
+    .hero-right {
+      padding: 4rem 0;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+    .hero-card {
+      background: var(--white);
+      border: 1px solid var(--bdr-2);
+      border-radius: 12px;
+      padding: 1.5rem 1.8rem;
+      box-shadow: var(--shadow);
+      transition: box-shadow var(--tr), transform var(--tr);
+    }
+    .hero-card:hover { box-shadow: var(--shadow-2); transform: translateY(-2px); }
+    .hc-label {
+      font-family: var(--mono); font-size: 0.67rem; letter-spacing: 0.12em;
+      color: var(--ink-4); text-transform: uppercase; margin-bottom: 0.4rem;
+    }
+    .hc-val {
+      font-family: var(--serif); font-size: 1.6rem; font-weight: 700; color: var(--ink);
+      line-height: 1.1; margin-bottom: 0.15rem;
+    }
+    .hc-val em { color: var(--gold); font-style: normal; }
+    .hc-count { display: inline; }
+    .hc-desc { font-size: 0.82rem; color: var(--ink-3); }
+    .hc-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .hc-sm { background: var(--white); border: 1px solid var(--bdr-2); border-radius: 12px; padding: 1.2rem 1.4rem; box-shadow: var(--shadow); }
+    .hc-sm .hc-val { font-size: 1.2rem; }
+
+    .hero-companies {
+      margin-top: 0.5rem;
+      display: flex; align-items: center; gap: 1.2rem; flex-wrap: wrap;
+    }
+    .hero-companies-label { font-family: var(--mono); font-size: 0.66rem; color: var(--ink-4); letter-spacing: 0.1em; text-transform: uppercase; }
+    .co-tag {
+      font-size: 0.8rem; font-weight: 500; color: var(--ink-3);
+      padding: 0.28rem 0.75rem; border-radius: 100px;
+      border: 1px solid var(--bdr); background: var(--white);
+      transition: border-color var(--tr), color var(--tr);
+    }
+    .co-tag:hover { border-color: var(--gold); color: var(--gold); }
+    .co-tag.now { border-color: var(--sage-bdr); color: var(--sage); background: var(--sage-bg); }
+
+    /* ═══ SHARED SECTION ═══ */
+    section { padding: 5.5rem 2.5rem; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .section-eyebrow {
+      display: inline-flex; align-items: center; gap: 0.55rem;
+      font-family: var(--mono); font-size: 0.7rem; color: var(--gold);
+      letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 0.8rem;
+    }
+    .section-eyebrow::before { content: ''; width: 24px; height: 1px; background: var(--gold); }
+    h2 {
+      font-family: var(--serif);
+      font-size: clamp(1.9rem, 3.5vw, 2.8rem);
+      font-weight: 800; letter-spacing: -0.02em; line-height: 1.15;
+      color: var(--ink);
+      margin-bottom: 0.6rem;
+    }
+    h2 em { font-style: italic; color: var(--gold); }
+    .section-lead { font-size: 1.05rem; color: var(--ink-3); max-width: 600px; line-height: 1.78; margin-bottom: 3.5rem; }
+    .tc { text-align: center; }
+    .tc .section-eyebrow { justify-content: center; }
+    .tc .section-eyebrow::before { display: none; }
+    .tc .section-eyebrow::after { content: ''; width: 24px; height: 1px; background: var(--gold); }
+    .tc .section-lead { margin: 0 auto 3.5rem; }
+
+    /* ═══ ABOUT ═══ */
+    #about { background: var(--white); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+    .about-text { }
+    .about-text p { font-size: 1rem; color: var(--ink-2); line-height: 1.88; margin-bottom: 1.1rem; }
+    .about-text p strong { color: var(--ink); font-weight: 600; }
+    .about-text p:last-of-type { margin-bottom: 0; }
+    .about-quote {
+      border-left: 3px solid var(--gold);
+      padding: 0.8rem 1.5rem;
+      margin: 2rem 0;
+      background: var(--gold-bg);
+      border-radius: 0 var(--r) var(--r) 0;
+    }
+    .about-quote p { font-family: var(--serif); font-size: 1.08rem; font-style: italic; color: var(--ink-2); margin-bottom: 0 !important; line-height: 1.65; }
+    .about-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.8rem; }
+    .chip {
+      font-size: 0.78rem; font-weight: 500; padding: 0.3rem 0.8rem;
+      border-radius: 100px; border: 1px solid var(--bdr);
+      color: var(--ink-3); background: var(--cream);
+    }
+    .chip.gold { border-color: var(--gold-bdr); color: var(--gold); background: var(--gold-bg); }
+    .chip.sage { border-color: var(--sage-bdr); color: var(--sage); background: var(--sage-bg); }
+
+    .about-right { display: flex; flex-direction: column; gap: 0; }
+    .edu-block {
+      background: var(--cream); border: 1px solid var(--bdr-2);
+      border-radius: 12px; padding: 1.8rem; margin-bottom: 1.2rem;
+    }
+    .edu-block h4 { font-family: var(--serif); font-size: 1rem; font-weight: 700; margin-bottom: 0.3rem; }
+    .edu-block p { font-size: 0.82rem; color: var(--ink-3); }
+    .expertise-list { list-style: none; margin-top: 0.5rem; }
+    .expertise-list li {
+      display: flex; align-items: flex-start; gap: 0.75rem;
+      padding: 0.9rem 0; border-bottom: 1px solid var(--bdr-2);
+      font-size: 0.9rem; color: var(--ink-2);
+    }
+    .expertise-list li:last-child { border-bottom: none; }
+    .expertise-list li i { color: var(--gold); margin-top: 0.22rem; font-size: 0.85rem; flex-shrink: 0; }
+
+    /* ═══ POSITIONING ═══ */
+    #positioning { background: var(--cream-2); }
+    .pos-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
+    .pos-card {
+      background: var(--white); border: 1px solid var(--bdr-2);
+      border-radius: 12px; padding: 2rem;
+      box-shadow: var(--shadow);
+      transition: box-shadow var(--tr), transform var(--tr);
+    }
+    .pos-card:hover { box-shadow: var(--shadow-2); transform: translateY(-3px); }
+    .pos-icon {
+      width: 46px; height: 46px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.15rem; margin-bottom: 1.1rem;
+    }
+    .pos-icon.gold { background: var(--gold-bg); }
+    .pos-icon.sage { background: var(--sage-bg); }
+    .pos-icon.ink { background: var(--cream-3); }
+    .pos-card h3 { font-family: var(--serif); font-size: 1.05rem; font-weight: 700; margin-bottom: 0.6rem; color: var(--ink); }
+    .pos-card p { font-size: 0.88rem; color: var(--ink-3); line-height: 1.72; }
+
+    /* ═══ PROGRAMS ═══ */
+    #projects { background: var(--white); }
+    .proj-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .proj-card {
+      background: var(--cream); border: 1px solid var(--bdr-2);
+      border-radius: 12px; padding: 2rem;
+      cursor: pointer;
+      transition: box-shadow var(--tr), transform var(--tr), border-color var(--tr);
+      position: relative;
+    }
+    .proj-card:hover { box-shadow: var(--shadow-2); transform: translateY(-3px); border-color: var(--bdr); }
+    .proj-card.featured { grid-column: span 2; background: var(--ink); color: var(--cream); border-color: var(--ink); }
+    .proj-card.featured .proj-co { color: var(--ink-4); }
+    .proj-card.featured h3 { color: var(--cream); }
+    .proj-card.featured p { color: rgba(250,247,242,0.75); }
+    .proj-card.featured .proj-arr { color: var(--gold-lt); }
+    .proj-card.featured .proj-tag { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.18); color: rgba(255,255,255,0.8); }
+    .proj-card.featured .proj-met { background: rgba(176,125,58,0.2); border-color: rgba(176,125,58,0.35); color: var(--gold-lt); }
+    .proj-co { font-family: var(--mono); font-size: 0.67rem; letter-spacing: 0.1em; color: var(--ink-4); text-transform: uppercase; margin-bottom: 0.9rem; }
+    .proj-hd { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
+    .proj-arr { color: var(--ink-4); font-size: 0.85rem; transition: transform var(--tr), color var(--tr); margin-top: 0.15rem; flex-shrink: 0; }
+    .proj-card:hover .proj-arr { transform: translate(3px,-3px); color: var(--gold); }
+    .proj-card.featured:hover .proj-arr { color: var(--gold-lt); }
+    .proj-card h3 { font-family: var(--serif); font-size: 1.15rem; font-weight: 800; color: var(--ink); line-height: 1.3; margin-bottom: 0.7rem; }
+    .proj-card p { font-size: 0.88rem; color: var(--ink-3); line-height: 1.7; margin-bottom: 1.2rem; }
+    .proj-mets { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; }
+    .proj-met { font-family: var(--mono); font-size: 0.67rem; background: var(--sage-bg); border: 1px solid var(--sage-bdr); color: var(--sage); padding: 0.22rem 0.6rem; border-radius: 4px; }
+    .proj-tags { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+    .proj-tag { font-size: 0.75rem; font-weight: 500; padding: 0.22rem 0.65rem; border-radius: 100px; border: 1px solid var(--bdr); color: var(--ink-3); background: var(--white); }
+
+    /* ═══ FRAMEWORKS ═══ */
+    #frameworks { background: var(--cream-2); }
+    .fw-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
+    .fw-card {
+      background: var(--white); border: 1px solid var(--bdr-2);
+      border-radius: 12px; padding: 2rem;
+      box-shadow: var(--shadow);
+      transition: box-shadow var(--tr), transform var(--tr);
+    }
+    .fw-card:hover { box-shadow: var(--shadow-2); transform: translateY(-3px); }
+    .fw-num {
+      font-family: var(--serif); font-size: 2.8rem; font-weight: 900;
+      color: var(--bdr); line-height: 1; margin-bottom: 1rem;
+      background: linear-gradient(180deg, var(--gold-lt) 0%, var(--bdr) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .fw-card h4 { font-family: var(--serif); font-size: 1rem; font-weight: 700; color: var(--ink); margin-bottom: 0.6rem; line-height: 1.35; }
+    .fw-card p { font-size: 0.85rem; color: var(--ink-3); line-height: 1.7; margin-bottom: 1.2rem; }
+    .fw-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.2rem; }
+    .fw-chip { font-size: 0.72rem; padding: 0.2rem 0.55rem; border-radius: 4px; border: 1px solid var(--bdr); color: var(--ink-3); }
+    .fw-link { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.8rem; font-weight: 600; color: var(--gold); }
+    .fw-link:hover { color: var(--sage); }
+
+    /* ═══ WRITING ═══ */
+    #writing { background: var(--white); }
+    .writing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .wcard {
+      background: var(--cream); border: 1px solid var(--bdr-2);
+      border-radius: 12px; padding: 2rem;
+      transition: box-shadow var(--tr), transform var(--tr), border-color var(--tr);
+    }
+    .wcard:hover { box-shadow: var(--shadow-2); transform: translateY(-3px); border-color: var(--bdr); }
+    .wcard-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+    .wcat {
+      font-family: var(--mono); font-size: 0.66rem; padding: 0.2rem 0.55rem;
+      border-radius: 4px; letter-spacing: 0.07em; text-transform: uppercase;
+    }
+    .wcat.sec { background: var(--gold-bg); color: var(--gold); border: 1px solid var(--gold-bdr); }
+    .wcat.ai  { background: var(--sage-bg); color: var(--sage); border: 1px solid var(--sage-bdr); }
+    .wcat.pm  { background: var(--cream-3); color: var(--ink-2); border: 1px solid var(--bdr); }
+    .wcat.car { background: var(--cream-3); color: var(--ink-2); border: 1px solid var(--bdr); }
+    .wdate { font-family: var(--mono); font-size: 0.65rem; color: var(--ink-4); }
+    .wcard h4 { font-family: var(--serif); font-size: 1.05rem; font-weight: 700; line-height: 1.35; margin-bottom: 0.6rem; color: var(--ink); }
+    .wcard h4 a { color: var(--ink); }
+    .wcard h4 a:hover { color: var(--gold); }
+    .wcard p { font-size: 0.85rem; color: var(--ink-3); line-height: 1.68; }
+    .wread { font-size: 0.72rem; color: var(--ink-4); margin-top: 1rem; display: flex; align-items: center; gap: 0.35rem; }
+
+    /* ═══ LAB ═══ */
+    #experiments { background: var(--cream-2); }
+    .lab-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.2rem; }
+    .lcard {
+      background: var(--white); border: 1px solid var(--bdr-2);
+      border-radius: 12px; padding: 1.6rem; box-shadow: var(--shadow);
+      transition: box-shadow var(--tr), transform var(--tr);
+    }
+    .lcard:hover { box-shadow: var(--shadow-2); transform: translateY(-3px); }
+    .lstatus {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.07em;
+      padding: 0.2rem 0.55rem; border-radius: 100px; margin-bottom: 0.85rem;
+    }
+    .lstatus.live { background: var(--sage-bg); color: var(--sage); border: 1px solid var(--sage-bdr); }
+    .lstatus.wip  { background: var(--gold-bg); color: var(--gold); border: 1px solid var(--gold-bdr); }
+    .lstatus.arch { background: var(--cream-3); color: var(--ink-3); border: 1px solid var(--bdr); }
+    .lcard h4 { font-family: var(--serif); font-size: 0.97rem; font-weight: 700; margin-bottom: 0.45rem; color: var(--ink); }
+    .lcard p { font-size: 0.82rem; color: var(--ink-3); line-height: 1.62; }
+    .llinks { display: flex; gap: 1rem; margin-top: 1rem; }
+    .llinks a { font-size: 0.77rem; font-weight: 600; color: var(--gold); display: flex; align-items: center; gap: 0.3rem; }
+    .llinks a:hover { color: var(--sage); }
+
+    /* ═══ TESTIMONIALS ═══ */
+    #testimonials { background: var(--ink); }
+    #testimonials .section-eyebrow { color: var(--gold-lt); }
+    #testimonials .section-eyebrow::before { background: var(--gold-lt); }
+    #testimonials h2 { color: var(--cream); }
+    #testimonials .section-lead { color: rgba(250,247,242,0.6); }
+    .test-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
+    .tcard {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px; padding: 2rem;
+      transition: background var(--tr), border-color var(--tr);
+    }
+    .tcard:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.18); }
+    .tq { font-family: var(--serif); font-size: 2.5rem; color: var(--gold-lt); opacity: 0.5; line-height: 1; margin-bottom: 0.5rem; }
+    .ttext { font-size: 0.9rem; color: rgba(250,247,242,0.78); line-height: 1.78; font-style: italic; margin-bottom: 1.5rem; }
+    .tauthor { display: flex; align-items: center; gap: 0.85rem; }
+    .tavatar {
+      width: 38px; height: 38px; border-radius: 50%; flex-shrink: 0;
+      background: linear-gradient(135deg, var(--gold), var(--gold-lt));
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 0.78rem; color: var(--ink);
+    }
+    .tname { font-size: 0.88rem; font-weight: 600; color: var(--cream); }
+    .trole { font-size: 0.72rem; color: rgba(250,247,242,0.5); font-family: var(--mono); }
+    .test-note { text-align: center; margin-top: 2rem; font-size: 0.8rem; color: rgba(250,247,242,0.35); }
+    .test-note a { color: var(--gold-lt); }
+
+    /* ═══ SKILLS ═══ */
+    #skills { background: var(--white); }
+    .skills-wrapper { display: grid; grid-template-columns: repeat(3,1fr); gap: 2.5rem; }
+    .skill-group h4 {
+      font-family: var(--mono); font-size: 0.72rem; font-weight: 500;
+      color: var(--gold); text-transform: uppercase; letter-spacing: 0.12em;
+      margin-bottom: 1.2rem; padding-bottom: 0.7rem;
+      border-bottom: 1px solid var(--bdr);
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .skill-row { display: flex; align-items: center; justify-content: space-between; padding: 0.55rem 0; border-bottom: 1px solid var(--bdr-2); font-size: 0.88rem; }
+    .skill-row:last-child { border-bottom: none; }
+    .skill-name { color: var(--ink-2); font-weight: 500; }
+    .sbar-t { width: 80px; height: 3px; background: var(--cream-3); border-radius: 2px; overflow: hidden; }
+    .sbar { height: 100%; background: linear-gradient(90deg, var(--gold), var(--gold-lt)); border-radius: 2px; transform: scaleX(0); transform-origin: left; transition: transform 1s ease; }
+    .sbar.on { transform: scaleX(1); }
+
+    /* ═══ TIMELINE ═══ */
+    #timeline { background: var(--cream-2); }
+    .tl-wrap { max-width: 800px; margin: 0 auto; }
+    .tl-wrap { position: relative; }
+    .tl-wrap::before { content: ''; position: absolute; left: 0; top: 6px; bottom: 0; width: 1px; background: linear-gradient(180deg, var(--gold) 0%, var(--bdr-2) 100%); }
+    .tl-item { padding-left: 3rem; position: relative; margin-bottom: 2.8rem; }
+    .tl-item:last-child { margin-bottom: 0; }
+    .tl-dot {
+      position: absolute; left: -6px; top: 3px;
+      width: 13px; height: 13px; border-radius: 50%;
+      background: var(--cream-2); border: 2px solid var(--gold);
+    }
+    .tl-dot.now { background: var(--gold); }
+    .tl-date { font-family: var(--mono); font-size: 0.68rem; color: var(--gold); letter-spacing: 0.09em; margin-bottom: 0.3rem; }
+    .tl-item h4 { font-family: var(--serif); font-size: 1.02rem; font-weight: 700; color: var(--ink); margin-bottom: 0.12rem; }
+    .tl-co { font-size: 0.82rem; color: var(--ink-4); margin-bottom: 0.6rem; }
+    .tl-item p { font-size: 0.85rem; color: var(--ink-3); line-height: 1.7; }
+
+    /* ═══ CONTACT ═══ */
+    #contact { background: var(--cream-2); }
+    .contact-inner {
+      max-width: 680px; margin: 0 auto; text-align: center;
+    }
+    .contact-inner h2 { margin-bottom: 1rem; }
+    .contact-inner p { font-size: 1rem; color: var(--ink-3); line-height: 1.8; margin-bottom: 2.5rem; }
+    .contact-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .cbtn {
+      display: inline-flex; align-items: center; gap: 0.55rem;
+      padding: 0.75rem 1.6rem; border-radius: 100px;
+      font-size: 0.9rem; font-weight: 600;
+      transition: transform var(--tr), box-shadow var(--tr);
+    }
+    .cbtn:hover { transform: translateY(-1px); }
+    .cbtn.primary { background: var(--ink); color: var(--cream); }
+    .cbtn.primary:hover { background: var(--ink-2); color: var(--cream); box-shadow: var(--shadow-2); }
+    .cbtn.secondary { border: 1.5px solid var(--bdr); color: var(--ink-2); }
+    .cbtn.secondary:hover { border-color: var(--ink); color: var(--ink); }
+
+    /* ═══ FOOTER ═══ */
+    footer {
+      background: var(--ink); color: rgba(250,247,242,0.5);
+      padding: 1.8rem 2.5rem;
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+    }
+    .f-logo { font-family: var(--serif); font-size: 0.95rem; font-weight: 700; color: var(--cream); }
+    .f-logo em { font-style: italic; color: var(--gold-lt); }
+    .f-copy { font-size: 0.76rem; }
+
+    /* ═══ MODAL ═══ */
+    .modal-overlay {
+      display: none; position: fixed; inset: 0; z-index: 200;
+      background: rgba(28,25,23,0.75); backdrop-filter: blur(8px);
+      padding: 2rem; overflow-y: auto; align-items: center; justify-content: center;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal {
+      background: var(--white); border-radius: 16px;
+      max-width: 700px; width: 100%; padding: 2.5rem;
+      box-shadow: 0 24px 80px rgba(28,25,23,0.2);
+      position: relative; animation: mIn 0.25s ease;
+    }
+    @keyframes mIn { from{opacity:0;transform:translateY(16px) scale(0.98)} to{opacity:1;transform:none} }
+    .mcls { position: absolute; top: 1.2rem; right: 1.2rem; background: none; border: none; cursor: pointer; color: var(--ink-4); font-size: 1rem; transition: color var(--tr); padding: 0.25rem; }
+    .mcls:hover { color: var(--ink); }
+    .mtag { font-family: var(--mono); font-size: 0.67rem; color: var(--gold); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.7rem; }
+    .modal h3 { font-family: var(--serif); font-size: 1.5rem; font-weight: 800; color: var(--ink); margin-bottom: 0.7rem; }
+    .mmeta { display: flex; gap: 1.4rem; margin-bottom: 1.4rem; flex-wrap: wrap; }
+    .mmi { font-size: 0.78rem; color: var(--ink-3); display: flex; align-items: center; gap: 0.35rem; }
+    .mmi i { color: var(--gold); }
+    .modal h4 { font-family: var(--mono); font-size: 0.7rem; font-weight: 600; color: var(--gold); text-transform: uppercase; letter-spacing: 0.12em; margin: 1.4rem 0 0.5rem; }
+    .modal p { font-size: 0.9rem; color: var(--ink-3); line-height: 1.8; }
+    .modal ul { list-style: none; }
+    .modal ul li { font-size: 0.88rem; color: var(--ink-3); padding: 0.32rem 0 0.32rem 1.3rem; position: relative; line-height: 1.68; }
+    .modal ul li::before { content: '—'; position: absolute; left: 0; color: var(--gold); font-size: 0.75rem; top: 0.38rem; }
+    .modal-mets { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; margin-top: 0.7rem; }
+    .mmbox { background: var(--cream); border: 1px solid var(--bdr-2); border-radius: 8px; padding: 1rem; text-align: center; }
+    .mmbox .n { font-family: var(--serif); font-size: 1.5rem; font-weight: 800; color: var(--gold); }
+    .mmbox .l { font-size: 0.7rem; color: var(--ink-3); margin-top: 0.2rem; line-height: 1.4; }
+
+    /* ═══ RESPONSIVE ═══ */
+    @media (max-width: 1024px) {
+      #hero { grid-template-columns: 1fr; gap: 2.5rem; padding-bottom: 4rem; }
+      .hero-right { padding-top: 0; }
+      .about-grid, .proj-grid, .writing-grid { grid-template-columns: 1fr; }
+      .proj-card.featured { grid-column: span 1; }
+      .pos-grid, .fw-grid, .lab-grid, .test-grid, .skills-wrapper { grid-template-columns: 1fr 1fr; }
+      .modal-mets { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      #philosophy .container { grid-template-columns: 1fr !important; gap: 2rem !important; }
+    }
+    @media (max-width: 640px) {
+      nav { padding: 0 1.2rem; }
+      .nav-links { display: none; }
+      .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 62px; left: 0; right: 0; background: var(--cream); padding: 1.5rem; border-bottom: 1px solid var(--bdr); gap: 1.2rem; }
+      .hamburger { display: flex; }
+      section { padding: 4rem 1.2rem; }
+      #hero { padding: 62px 1.2rem 3rem; }
+      .pos-grid, .fw-grid, .lab-grid, .test-grid, .skills-wrapper { grid-template-columns: 1fr; }
+      .hc-row { grid-template-columns: 1fr 1fr; }
+      .modal { padding: 1.5rem; }
+      .modal-mets { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<div id="scroll-progress"></div>
+
+<!-- ── NAV ─────────────────────────────────────────── -->
+<nav>
+  <div class="nav-logo">Smitha <span>Poluri</span></div>
+  <ul class="nav-links" id="nl">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Programs</a></li>
+    <li><a href="#frameworks">Frameworks</a></li>
+    <li><a href="#writing">Writing</a></li>
+    <li><a href="#experiments">Lab</a></li>
+    <li><a href="#timeline">Journey</a></li>
+    <li><a href="#contact" class="nav-cta">Connect</a></li>
+  </ul>
+  <div style="display:flex;align-items:center;gap:0.5rem;">
+    <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <i class="fa-solid fa-moon" id="theme-icon"></i>
+    </button>
+    <div class="hamburger" id="hb" onclick="toggleNav()"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+
+<!-- ── HERO ────────────────────────────────────────── -->
+<section id="hero">
+  <div class="hero-left" data-aos="fade-right">
+    <div class="hero-eyebrow">Staff Engineering Program Manager · BeyondTrust</div>
+
+    <h1><em>Ordo ab Chao</em></h1>
+    <div style="font-family:var(--mono);font-size:0.72rem;color:var(--ink-4);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:1.8rem;margin-top:-0.8rem;">Order out of Chaos</div>
+
+    <p class="hero-desc">
+      Latin for <em style="font-style:italic;color:var(--ink-2);">Order out of Chaos</em> — and honestly, that's just what the work is.
+      I've spent 20 years walking into situations where smart, capable people were
+      working hard and still not moving. The technology was usually fine.
+      What was missing was structure: a shared understanding of what we were actually building,
+      who owned what, and what done looked like.
+    </p>
+    <p class="hero-desc" style="margin-top:-1rem;">
+      That's what I spend my time on. Not heroics — just the quiet, necessary work of
+      making complex things coherent. At Amazon it was global ML programs.
+      At BeyondTrust it's AI and identity security. The environments change.
+      The need for clarity doesn't.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#projects" class="btn-fill"><i class="fa-solid fa-arrow-right"></i> View My Programs</a>
+      <a href="#writing" class="btn-line"><i class="fa-solid fa-pen-nib"></i> Read My Thinking</a>
+    </div>
+
+    <div class="hero-companies" style="margin-top:2rem;">
+      <span class="hero-companies-label">Career at</span>
+      <span class="co-tag now">BeyondTrust</span>
+      <span class="co-tag">Amazon</span>
+      <span class="co-tag">PwC Canada</span>
+      <span class="co-tag">autoTRADER.ca</span>
+    </div>
+  </div>
+
+  <div class="hero-right" data-aos="fade-left" data-aos-delay="100">
+    <div class="hero-card">
+      <div class="hc-label">Career Span</div>
+      <div class="hc-val"><span class="hc-count" data-target="20" data-suffix="+">20</span><em> years</em></div>
+      <div class="hc-desc">Building at the intersection of AI, security &amp; scale</div>
+    </div>
+    <div class="hc-row">
+      <div class="hc-sm">
+        <div class="hc-label">Amazon</div>
+        <div class="hc-val">3.5<em>yr</em></div>
+        <div class="hc-desc">Global ML Programs</div>
+      </div>
+      <div class="hc-sm">
+        <div class="hc-label">At Scale</div>
+        <div class="hc-val"><span class="hc-count" data-target="6" data-suffix="B+">6</span></div>
+        <div class="hc-desc">Page views/month at Plentyoffish</div>
+      </div>
+    </div>
+    <div class="hero-card" style="background: var(--gold-bg); border-color: var(--gold-bdr);">
+      <div class="hc-label" style="color:var(--gold);">Current Focus</div>
+      <div class="hc-val" style="font-size:1.1rem;line-height:1.3;">AI-Driven Identity Security &amp; Privileged Access Management</div>
+      <div class="hc-desc" style="margin-top:0.4rem;">BeyondTrust · Maple Ridge, BC · Remote</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ABOUT ───────────────────────────────────────── -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div data-aos="fade-right">
+        <div class="section-eyebrow">About Me</div>
+        <h2>Engineering leader.<br><em>AI systems thinker.</em></h2>
+
+        <div class="about-quote">
+          <p>"Most organizations treat security and AI velocity as opposing forces. I build programs where they reinforce each other — and that difference is worth a decade of technical credibility to understand."</p>
+        </div>
+
+        <p>
+          I'm a technology leader with <strong>over two decades of experience</strong> — starting as an engineer, moving into management, and eventually into Staff-level program leadership. What I bring isn't just process. It's the ability to read the code, understand the architecture, and still align a room of executives on what needs to happen next.
+        </p>
+        <p>
+          At <strong>Amazon</strong>, I led global ML and infrastructure modernization programs across international marketplaces — operationalizing ML models, reducing latency, and strengthening compliance at scale. I translated abstract applied science goals into production outcomes that held under regulatory scrutiny.
+        </p>
+        <p>
+          Now at <strong>BeyondTrust</strong>, I'm advancing AI-driven identity security — ensuring that intelligent automation not only scales efficiently, but safeguards digital trust for enterprise customers worldwide. The challenge: the AI systems themselves must be trustworthy enough to protect other systems.
+        </p>
+
+        <div class="about-chips">
+          <span class="chip gold">AI/ML Programs</span>
+          <span class="chip gold">Identity Security</span>
+          <span class="chip gold">MLOps</span>
+          <span class="chip sage">AWS</span>
+          <span class="chip sage">Azure</span>
+          <span class="chip sage">.NET / C#</span>
+          <span class="chip sage">Java</span>
+          <span class="chip">Cross-Functional Leadership</span>
+          <span class="chip">Compliance Engineering</span>
+          <span class="chip">PAM</span>
+          <span class="chip">Stakeholder Management</span>
+        </div>
+      </div>
+
+      <div data-aos="fade-left">
+        <div class="edu-block">
+          <div class="section-eyebrow" style="margin-bottom:1rem;">Education</div>
+          <h4>B.E. Computer Science &amp; Engineering</h4>
+          <p>Bangalore University · 1994–1998</p>
+          <div style="margin-top:1rem; padding-top:1rem; border-top:1px solid var(--bdr-2);">
+            <h4>PHP &amp; .NET Development</h4>
+            <p>British Columbia Institute of Technology (BCIT) · 2007–2009</p>
+          </div>
+        </div>
+
+        <ul class="expertise-list" style="margin-top:0.5rem;">
+          <li><i class="fa-solid fa-circle-check"></i> <span><strong>Pioneer</strong> — Designed AI-first identity governance frameworks now shaping how enterprises approach PAM in the AI era.</span></li>
+          <li><i class="fa-solid fa-circle-check"></i> <span><strong>Operator at Scale</strong> — Led global ML programs at Amazon across markets handling billions of transactions.</span></li>
+          <li><i class="fa-solid fa-circle-check"></i> <span><strong>Engineer at Heart</strong> — Built and shipped software serving 6B+ page views/month. Reads the code; earns trust with engineers from day one.</span></li>
+          <li><i class="fa-solid fa-circle-check"></i> <span><strong>Translator</strong> — Bridges applied science, security, compliance, and executive stakeholders. Turns ambiguity into aligned execution.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── POSITIONING ─────────────────────────────────── -->
+<section id="positioning">
+  <div class="container">
+    <div class="tc">
+      <div class="section-eyebrow">Unique Value</div>
+      <h2>The <em>rare intersection</em></h2>
+      <p class="section-lead">Most leaders have one of these. Very few have all three working together.</p>
+    </div>
+    <div class="pos-grid">
+      <div class="pos-card" data-aos="fade-up">
+        <div class="pos-icon gold"><i class="fa-solid fa-brain" style="color:var(--gold)"></i></div>
+        <h3>AI at Enterprise Scale</h3>
+        <p>Not AI in a sandbox — AI across global marketplaces under compliance constraints. Led ML programs from applied science prototypes through production at Amazon, where a 1% latency regression affects millions of transactions and one compliance miss closes a market.</p>
+      </div>
+      <div class="pos-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="pos-icon sage"><i class="fa-solid fa-shield-halved" style="color:var(--sage)"></i></div>
+        <h3>Security That Doesn't Slow AI Down</h3>
+        <p>Most organizations treat security and AI velocity as opposing forces. At BeyondTrust, I design programs where intelligent automation and identity security reinforce each other — trust built into the architecture, not bolted on afterward.</p>
+      </div>
+      <div class="pos-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="pos-icon ink"><i class="fa-solid fa-code" style="color:var(--ink-2)"></i></div>
+        <h3>Engineering Roots. Strategic Vision.</h3>
+        <p>Starting as a software developer serving 6 billion page views a month gives me a different lens than PM-track leaders. I read the code, understand architectural tradeoffs, and earn credibility with engineers from day one. Then I translate it into business outcomes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PHILOSOPHY STRIP ───────────────────────────── -->
+<section id="philosophy" style="background:var(--ink);padding:4rem 2.5rem;">
+  <div class="container" style="display:grid;grid-template-columns:1fr 2fr;gap:4rem;align-items:center;">
+    <div>
+      <div class="section-eyebrow" style="color:var(--gold-lt);">My Belief</div>
+      <h2 style="color:var(--cream);font-size:clamp(1.6rem,3vw,2.2rem);">The unpopular<br><em>take on AI programs</em></h2>
+    </div>
+    <div>
+      <p style="font-size:1.1rem;color:var(--ink-4);line-height:1.9;margin-bottom:1.2rem;">
+        Most AI programs fail not because the models aren't good enough — they fail because the program infrastructure around the model isn't designed to hold. Ambiguous ownership, unmeasured risk tolerance, and the misalignment between what applied science optimizes for and what compliance needs are what sink most initiatives.
+      </p>
+      <p style="font-size:1.1rem;color:var(--ink-4);line-height:1.9;">
+        <strong style="color:var(--cream);">My approach:</strong> Build the shared definition of "done" before the first sprint. Engineer compliance in — not on. Make risk visible from day one. The programs that survive are the ones where <em style="color:var(--gold-lt);">the process is as rigorously designed as the product.</em>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROGRAMS ────────────────────────────────────── -->
+<section id="projects">
+  <div class="container">
+    <div class="tc">
+      <div class="section-eyebrow">Featured Programs</div>
+      <h2>Programs that <em>shipped</em></h2>
+      <p class="section-lead">Portfolio-level programs spanning ML operationalization, identity security, compliance engineering, and digital transformation.</p>
+    </div>
+    <div class="proj-grid">
+
+      <div class="proj-card featured" data-aos="fade-up" onclick="openM('m1')">
+        <div class="proj-co">Amazon · Senior TPM · May 2022 – Oct 2025</div>
+        <div class="proj-hd">
+          <h3>Global ML & Infrastructure Modernization at Amazon</h3>
+          <i class="fa-solid fa-arrow-up-right proj-arr"></i>
+        </div>
+        <p>Pioneered a portfolio of global machine learning and infrastructure modernization programs across Amazon's international marketplaces. Partnered with applied science, product, and engineering to operationalize ML models at scale — reducing latency, cutting infrastructure costs, and strengthening compliance across high-traffic systems.</p>
+        <div class="proj-mets">
+          <span class="proj-met">↓ Latency across marketplace systems</span>
+          <span class="proj-met">↓ Infrastructure costs</span>
+          <span class="proj-met">↑ Compliance posture</span>
+          <span class="proj-met">Global scale</span>
+        </div>
+        <div class="proj-tags">
+          <span class="proj-tag">ML Operationalization</span>
+          <span class="proj-tag">Infrastructure Modernization</span>
+          <span class="proj-tag">AWS</span>
+          <span class="proj-tag">Applied Science Partnership</span>
+          <span class="proj-tag">Compliance Engineering</span>
+        </div>
+      </div>
+
+      <div class="proj-card" data-aos="fade-up" data-aos-delay="80" onclick="openM('m2')">
+        <div class="proj-co">BeyondTrust · Staff EPM · Oct 2025–Present</div>
+        <div class="proj-hd">
+          <h3>AI-Driven Identity Security & PAM Programs</h3>
+          <i class="fa-solid fa-arrow-up-right proj-arr"></i>
+        </div>
+        <p>Bridging AI strategy with cybersecurity engineering at BeyondTrust — designing programs that embed intelligent automation into privileged access management while upholding the security rigor enterprise customers depend on.</p>
+        <div class="proj-mets"><span class="proj-met">Enterprise PAM</span><span class="proj-met">AI + Security convergence</span></div>
+        <div class="proj-tags"><span class="proj-tag">Identity Security</span><span class="proj-tag">PAM</span><span class="proj-tag">AI Automation</span></div>
+      </div>
+
+      <div class="proj-card" data-aos="fade-up" data-aos-delay="140" onclick="openM('m3')">
+        <div class="proj-co">Amazon · Compliance Engineering</div>
+        <div class="proj-hd">
+          <h3>Compliance & Operational Resilience at Scale</h3>
+          <i class="fa-solid fa-arrow-up-right proj-arr"></i>
+        </div>
+        <p>Designed multi-region compliance programs across Amazon marketplaces, embedding automation into workflows to eliminate manual toil, satisfy regional regulatory requirements, and make resilience measurable — not aspirational.</p>
+        <div class="proj-mets"><span class="proj-met">Multi-region compliance</span><span class="proj-met">Automated workflows</span></div>
+        <div class="proj-tags"><span class="proj-tag">Compliance Programs</span><span class="proj-tag">Workflow Automation</span><span class="proj-tag">Global Ops</span></div>
+      </div>
+
+      <div class="proj-card" data-aos="fade-up" data-aos-delay="190" onclick="openM('m4')">
+        <div class="proj-co">PwC Canada · June 2020 – Sept 2022</div>
+        <div class="proj-hd">
+          <h3>Enterprise Digital Transformation · PwC Canada</h3>
+          <i class="fa-solid fa-arrow-up-right proj-arr"></i>
+        </div>
+        <p>Led engineering teams delivering cloud transformation programs on AWS and Azure for enterprise clients — the pivot role combining hands-on .NET delivery with cross-functional management and executive communication.</p>
+        <div class="proj-mets"><span class="proj-met">AWS + Azure delivery</span><span class="proj-met">Engineering → Program leadership</span></div>
+        <div class="proj-tags"><span class="proj-tag">Cloud Transformation</span><span class="proj-tag">Azure</span><span class="proj-tag">AWS</span><span class="proj-tag">.NET</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── FRAMEWORKS ──────────────────────────────────── -->
+<section id="frameworks">
+  <div class="container">
+    <div class="tc">
+      <div class="section-eyebrow">Thinking Tools</div>
+      <h2>Frameworks &amp; <em>decision models</em></h2>
+      <p class="section-lead">Repeatable systems I've developed from 20+ years of leading complex programs. Available on request.</p>
+    </div>
+    <div class="fw-grid">
+
+      <div class="fw-card" data-aos="fade-up">
+        <div class="fw-num">01</div>
+        <h4>AI Deployment Readiness for Regulated Environments</h4>
+        <p>A decision framework for assessing whether an AI initiative is ready for production where security, compliance, and availability constraints are non-negotiable. Used before any ML model enters GA review.</p>
+        <div class="fw-chips">
+          <span class="fw-chip">Compliance Readiness</span>
+          <span class="fw-chip">Risk Assessment</span>
+          <span class="fw-chip">Model Confidence</span>
+        </div>
+        <a href="mailto:smithapoluri@gmail.com" class="fw-link"><i class="fa-solid fa-arrow-down-to-line"></i> Request Framework</a>
+      </div>
+
+      <div class="fw-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="fw-num">02</div>
+        <h4>Cross-Functional AI Alignment Model</h4>
+        <p>A structured approach to aligning security, product, data science, and engineering teams around a shared AI program definition — covering ownership, tradeoffs, success metrics, and escalation design.</p>
+        <div class="fw-chips">
+          <span class="fw-chip">RACI for AI Teams</span>
+          <span class="fw-chip">Stakeholder Alignment</span>
+          <span class="fw-chip">Escalation Design</span>
+        </div>
+        <a href="mailto:smithapoluri@gmail.com" class="fw-link"><i class="fa-solid fa-arrow-down-to-line"></i> Request Framework</a>
+      </div>
+
+      <div class="fw-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="fw-num">03</div>
+        <h4>ML Program Health Scorecard</h4>
+        <p>A weekly/monthly health review template for ML initiatives — tracking model quality, deployment velocity, cost efficiency, team morale, and stakeholder confidence in one unified view.</p>
+        <div class="fw-chips">
+          <span class="fw-chip">Model Quality</span>
+          <span class="fw-chip">Cost Governance</span>
+          <span class="fw-chip">Delivery Velocity</span>
+        </div>
+        <a href="mailto:smithapoluri@gmail.com" class="fw-link"><i class="fa-solid fa-arrow-down-to-line"></i> Request Framework</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── WRITING ─────────────────────────────────────── -->
+<section id="writing">
+  <div class="container">
+    <div class="tc">
+      <div class="section-eyebrow">Thought Leadership</div>
+      <h2>Writing &amp; <em>thinking</em></h2>
+      <p class="section-lead">Original perspectives on AI governance, identity security, and what it takes to lead engineering programs at scale.</p>
+    </div>
+    <div class="writing-grid">
+
+      <div class="wcard" data-aos="fade-up">
+        <div class="wcard-top">
+          <span class="wcat sec">Identity Security</span>
+          <span class="wdate">Coming Soon</span>
+        </div>
+        <h4><a href="mailto:smithapoluri@gmail.com">Identity Management in the Age of AI: The New Security Paradigm</a></h4>
+        <p>How AI is fundamentally changing identity verification, threat detection, and access management — and why the old mental models for PAM need to evolve with it. A practitioner's view from inside BeyondTrust.</p>
+        <div class="wread"><i class="fa-regular fa-clock"></i> 8 min read</div>
+      </div>
+
+      <div class="wcard" data-aos="fade-up" data-aos-delay="80">
+        <div class="wcard-top">
+          <span class="wcat ai">AI/ML Strategy</span>
+          <span class="wdate">Coming Soon</span>
+        </div>
+        <h4><a href="mailto:smithapoluri@gmail.com">Why Enterprise AI Initiatives Fail: A Program Manager's Diagnosis</a></h4>
+        <p>After 20+ years and two of the world's most demanding technical environments, the failure patterns are consistent. Here's what I've learned to look for early — and how to course-correct before it's too late.</p>
+        <div class="wread"><i class="fa-regular fa-clock"></i> 10 min read</div>
+      </div>
+
+      <div class="wcard" data-aos="fade-up" data-aos-delay="130">
+        <div class="wcard-top">
+          <span class="wcat pm">Program Management</span>
+          <span class="wdate">Coming Soon</span>
+        </div>
+        <h4><a href="mailto:smithapoluri@gmail.com">From Engineer to Program Leader: What Technical Roots Give You</a></h4>
+        <p>The instincts built writing code for 6 billion page views a month don't disappear when you move into program management. Here's how engineering depth makes you a better leader — and where it can hold you back.</p>
+        <div class="wread"><i class="fa-regular fa-clock"></i> 7 min read</div>
+      </div>
+
+      <div class="wcard" data-aos="fade-up" data-aos-delay="180">
+        <div class="wcard-top">
+          <span class="wcat car">AI Governance</span>
+          <span class="wdate">Coming Soon</span>
+        </div>
+        <h4><a href="mailto:smithapoluri@gmail.com">The Cost of Rushing AI in Regulated Industries</a></h4>
+        <p>Speed-to-market obsession creates real, lasting risk in identity security and compliance-heavy environments. A framework for knowing when to move fast — and when slowing down is the highest-leverage decision you can make.</p>
+        <div class="wread"><i class="fa-regular fa-clock"></i> 9 min read</div>
+      </div>
+
+    </div>
+    <div style="text-align:center;margin-top:2.5rem;display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;">
+      <a href="mailto:smithapoluri@gmail.com" class="btn-line" style="display:inline-flex;border-radius:100px;">
+        <i class="fa-solid fa-envelope"></i> Get notified when I publish
+      </a>
+      <a href="https://www.linkedin.com/in/smithapoluri/" target="_blank" class="btn-line" style="display:inline-flex;border-radius:100px;">
+        <i class="fa-brands fa-linkedin"></i> Follow on LinkedIn
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── AI LAB ───────────────────────────────────────── -->
+<section id="experiments">
+  <div class="container">
+    <div class="tc">
+      <div class="section-eyebrow">AI Lab</div>
+      <h2>Experiments &amp; <em>side projects</em></h2>
+      <p class="section-lead">Hands-on explorations at the edge of AI, security, and program management tooling.</p>
+    </div>
+    <div class="lab-grid">
+
+      <div class="lcard" data-aos="fade-up">
+        <div class="lstatus live"><span>●</span> Live</div>
+        <h4>TPM Copilot CLI</h4>
+        <p>CLI tool using LLMs to generate program charters, RACI matrices, and risk registers from a one-line project description. Built to speed up program kickoffs.</p>
+        <div class="llinks"><a href="https://github.com/smithapoluri" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a></div>
+      </div>
+
+      <div class="lcard" data-aos="fade-up" data-aos-delay="70">
+        <div class="lstatus live"><span>●</span> Live</div>
+        <h4>ML Incident Playbook</h4>
+        <p>Incident response playbook for AI/ML systems — model degradation, data drift, cost runaway, and compliance violations. Built from real war-room experience at Amazon.</p>
+        <div class="llinks"><a href="mailto:smithapoluri@gmail.com"><i class="fa-solid fa-book-open"></i> Request</a></div>
+      </div>
+
+      <div class="lcard" data-aos="fade-up" data-aos-delay="130">
+        <div class="lstatus wip"><span>●</span> In Progress</div>
+        <h4>Security AI Eval Framework</h4>
+        <p>Evaluation framework for AI models in cybersecurity — measuring accuracy, false positive rate, adversarial robustness, and explainability for security practitioners.</p>
+        <div class="llinks"><a href="https://github.com/smithapoluri" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a></div>
+      </div>
+
+      <div class="lcard" data-aos="fade-up" data-aos-delay="170">
+        <div class="lstatus live"><span>●</span> Live</div>
+        <h4>Program Complexity Scorer</h4>
+        <p>Python tool scoring a program brief across eight complexity axes to help PMs right-size their planning investment before committing teams.</p>
+        <div class="llinks"><a href="https://github.com/smithapoluri" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a></div>
+      </div>
+
+      <div class="lcard" data-aos="fade-up" data-aos-delay="220">
+        <div class="lstatus wip"><span>●</span> In Progress</div>
+        <h4>PAM Intelligence Prototype</h4>
+        <p>Exploring ML anomaly detection on PAM audit logs — translating raw access events into behavioral risk signals for security teams.</p>
+        <div class="llinks"><a href="https://github.com/smithapoluri" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a></div>
+      </div>
+
+      <div class="lcard" data-aos="fade-up" data-aos-delay="270">
+        <div class="lstatus arch"><span>●</span> Archived</div>
+        <h4>Marketplace Latency Monitor</h4>
+        <p>Built at Amazon to track p99 latency regressions tied to ML model rollouts — attributing latency changes to specific deployments in near real-time.</p>
+        <div class="llinks"><a href="https://github.com/smithapoluri" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── TESTIMONIALS ────────────────────────────────── -->
+<section id="testimonials">
+  <div class="container">
+    <div class="tc">
+      <div class="section-eyebrow">What Colleagues Say</div>
+      <h2 style="color:var(--cream);">Trusted by the people<br>who work closest.</h2>
+      <p class="section-lead">Replace these with real recommendations from your <a href="https://www.linkedin.com/in/smithapoluri/" target="_blank" style="color:var(--gold-lt)">LinkedIn profile</a>.</p>
+    </div>
+    <div class="test-grid">
+
+      <div class="tcard" data-aos="fade-up">
+        <div class="tq">"</div>
+        <p class="ttext">Smitha has a rare ability to translate deeply technical ML work into language that executives, compliance teams, and engineers all understand simultaneously. She doesn't just run programs — she builds shared understanding across organizations that don't naturally align.</p>
+        <div class="tauthor">
+          <div class="tavatar">AK</div>
+          <div>
+            <div class="tname">Add Your Recommendation</div>
+            <div class="trole">Colleague · Amazon</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tcard" data-aos="fade-up" data-aos-delay="100">
+        <div class="tq">"</div>
+        <p class="ttext">What sets Smitha apart is engineering credibility. She walks into a room with senior data scientists, reads the architecture, asks the right questions, and earns trust immediately. That's not something you can fake — it comes from 20 years of actually building things.</p>
+        <div class="tauthor">
+          <div class="tavatar">SM</div>
+          <div>
+            <div class="tname">Add Your Recommendation</div>
+            <div class="trole">Cross-functional Partner · Amazon</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tcard" data-aos="fade-up" data-aos-delay="200">
+        <div class="tq">"</div>
+        <p class="ttext">Smitha consistently delivers the hardest kind of program: where product, security, and compliance all have competing priorities and someone needs to hold the line on all three simultaneously — without losing alignment or momentum.</p>
+        <div class="tauthor">
+          <div class="tavatar">RJ</div>
+          <div>
+            <div class="tname">Add Your Recommendation</div>
+            <div class="trole">Stakeholder · PwC Canada</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── SKILLS ──────────────────────────────────────── -->
+<section id="skills">
+  <div class="container">
+    <div class="tc">
+      <div class="section-eyebrow">Expertise</div>
+      <h2>Skills &amp; <em>tools</em></h2>
+    </div>
+    <div class="skills-wrapper" id="skills-sect">
+      <div class="skill-group" data-aos="fade-up">
+        <h4><i class="fa-solid fa-brain"></i> AI / ML Programs</h4>
+        <div class="skill-row"><span class="skill-name">ML Program Management</span><div class="sbar-t"><div class="sbar" data-p="0.95"></div></div></div>
+        <div class="skill-row"><span class="skill-name">ML Operationalization</span><div class="sbar-t"><div class="sbar" data-p="0.88"></div></div></div>
+        <div class="skill-row"><span class="skill-name">AI Strategy & Roadmapping</span><div class="sbar-t"><div class="sbar" data-p="0.92"></div></div></div>
+        <div class="skill-row"><span class="skill-name">MLOps & Model Lifecycle</span><div class="sbar-t"><div class="sbar" data-p="0.82"></div></div></div>
+        <div class="skill-row"><span class="skill-name">Applied Science Partnership</span><div class="sbar-t"><div class="sbar" data-p="0.90"></div></div></div>
+      </div>
+      <div class="skill-group" data-aos="fade-up" data-aos-delay="100">
+        <h4><i class="fa-solid fa-shield-halved"></i> Security & Leadership</h4>
+        <div class="skill-row"><span class="skill-name">Identity Security (PAM)</span><div class="sbar-t"><div class="sbar" data-p="0.88"></div></div></div>
+        <div class="skill-row"><span class="skill-name">Compliance Engineering</span><div class="sbar-t"><div class="sbar" data-p="0.90"></div></div></div>
+        <div class="skill-row"><span class="skill-name">Stakeholder Management</span><div class="sbar-t"><div class="sbar" data-p="0.95"></div></div></div>
+        <div class="skill-row"><span class="skill-name">Risk Management</span><div class="sbar-t"><div class="sbar" data-p="0.92"></div></div></div>
+        <div class="skill-row"><span class="skill-name">Cross-Functional Programs</span><div class="sbar-t"><div class="sbar" data-p="0.95"></div></div></div>
+      </div>
+      <div class="skill-group" data-aos="fade-up" data-aos-delay="200">
+        <h4><i class="fa-solid fa-code"></i> Engineering & Platforms</h4>
+        <div class="skill-row"><span class="skill-name">AWS</span><div class="sbar-t"><div class="sbar" data-p="0.88"></div></div></div>
+        <div class="skill-row"><span class="skill-name">Azure</span><div class="sbar-t"><div class="sbar" data-p="0.82"></div></div></div>
+        <div class="skill-row"><span class="skill-name">.NET / C#</span><div class="sbar-t"><div class="sbar" data-p="0.85"></div></div></div>
+        <div class="skill-row"><span class="skill-name">Java</span><div class="sbar-t"><div class="sbar" data-p="0.75"></div></div></div>
+        <div class="skill-row"><span class="skill-name">SQL & Data Analysis</span><div class="sbar-t"><div class="sbar" data-p="0.80"></div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TIMELINE ────────────────────────────────────── -->
+<section id="timeline">
+  <div class="container">
+    <div class="tc">
+      <div class="section-eyebrow">Career Journey</div>
+      <h2>20+ years of <em>building</em></h2>
+      <p class="section-lead" style="margin-bottom:4rem;">From software developer to engineering leader at the frontier of AI and identity security.</p>
+    </div>
+    <div class="tl-wrap">
+
+      <div class="tl-item" data-aos="fade-up">
+        <div class="tl-dot now"></div>
+        <div class="tl-date">Oct 2025 — Present</div>
+        <h4>Staff Engineering Program Manager</h4>
+        <div class="tl-co">BeyondTrust · Maple Ridge, BC (Remote)</div>
+        <p>Advancing identity security, privileged access management, and AI-driven automation — bridging AI strategy with cybersecurity engineering to ensure intelligent systems scale safely.</p>
+      </div>
+
+      <div class="tl-item" data-aos="fade-up" data-aos-delay="60">
+        <div class="tl-dot"></div>
+        <div class="tl-date">May 2022 — Oct 2025 · 3 years 6 months</div>
+        <h4>Senior Technical Program Manager</h4>
+        <div class="tl-co">Amazon · Vancouver, BC</div>
+        <p>Led multiple global ML and infrastructure modernization programs across Amazon marketplaces — operationalizing ML models, reducing latency, and strengthening compliance and resilience at scale.</p>
+      </div>
+
+      <div class="tl-item" data-aos="fade-up" data-aos-delay="110">
+        <div class="tl-dot"></div>
+        <div class="tl-date">June 2020 — Sept 2022 · 2 years 4 months</div>
+        <h4>Senior Software Engineer, Manager</h4>
+        <div class="tl-co">PwC Canada · Vancouver, BC</div>
+        <p>Led engineering teams delivering cloud transformation programs on AWS and Azure for enterprise clients. The pivotal bridge role combining technical delivery with cross-functional program management.</p>
+      </div>
+
+      <div class="tl-item" data-aos="fade-up" data-aos-delay="160">
+        <div class="tl-dot"></div>
+        <div class="tl-date">Apr 2017 — Apr 2020 · 3 years</div>
+        <h4>Software Engineer (L2)</h4>
+        <div class="tl-co">autoTRADER.ca · Burnaby, BC</div>
+        <p>Full-stack engineering on high-traffic consumer automotive platforms. Deepened expertise in scalable system design and agile delivery at consumer scale.</p>
+      </div>
+
+      <div class="tl-item" data-aos="fade-up" data-aos-delay="200">
+        <div class="tl-dot"></div>
+        <div class="tl-date">Aug 2012 — Feb 2015 · 2 years 7 months</div>
+        <h4>Software Developer</h4>
+        <div class="tl-co">Plentyoffish.com · Vancouver, BC</div>
+        <p>Scaled custom .NET applications serving <strong>6 billion+ page views per month</strong>. Owned billing and payments — building automated refund, subscription, and payment processor integrations that drove core business revenue.</p>
+      </div>
+
+      <div class="tl-item" data-aos="fade-up" data-aos-delay="250">
+        <div class="tl-dot"></div>
+        <div class="tl-date">2009 — 2012 · Earlier roles</div>
+        <h4>Web Developer & Interface Designer</h4>
+        <div class="tl-co">Contac Services · GeekSquad Canada · BestBuy Canada</div>
+        <p>Built the engineering foundation — personalized web platforms, ASP.NET applications, and enterprise integrations that underpins every program leadership decision today.</p>
+      </div>
+
+      <div class="tl-item" data-aos="fade-up" data-aos-delay="290">
+        <div class="tl-dot"></div>
+        <div class="tl-date">1994 — 1998</div>
+        <h4>B.E. Computer Science & Engineering</h4>
+        <div class="tl-co">Bangalore University</div>
+        <p>The foundation. A CS engineering degree that launched a two-decade journey from software developer to engineering leader at the frontier of AI and identity security.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ─────────────────────────────────────── -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-inner" data-aos="fade-up">
+      <div class="section-eyebrow" style="justify-content:center;">Let's Talk</div>
+      <h2>Let's build something<br>that <em>actually matters.</em></h2>
+      <p>Whether you're navigating an AI program in a regulated environment, thinking through identity security and AI convergence, or comparing notes on what makes engineering programs succeed at scale — I'd love to connect.</p>
+      <div class="contact-btns">
+        <a href="mailto:smithapoluri@gmail.com" class="cbtn primary"><i class="fa-solid fa-envelope"></i> smithapoluri@gmail.com</a>
+        <a href="https://www.linkedin.com/in/smithapoluri/" target="_blank" class="cbtn secondary"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+        <a href="https://github.com/smithapoluri" target="_blank" class="cbtn secondary"><i class="fa-brands fa-github"></i> GitHub</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ──────────────────────────────────────── -->
+<footer>
+  <div class="f-logo">Smitha <em>Poluri</em></div>
+  <div class="f-copy">Staff EPM · BeyondTrust · Maple Ridge, BC, Canada · Turning complexity into clarity.</div>
+</footer>
+
+<!-- ── MODALS ──────────────────────────────────────── -->
+<div class="modal-overlay" id="m1" onclick="closeMBg(event,'m1')">
+  <div class="modal">
+    <button class="mcls" onclick="closeM('m1')"><i class="fa-solid fa-xmark"></i></button>
+    <div class="mtag">Amazon · Senior TPM · May 2022 – Oct 2025</div>
+    <h3>Global ML & Infrastructure Modernization</h3>
+    <div class="mmeta">
+      <span class="mmi"><i class="fa-solid fa-calendar"></i> 3.5 years</span>
+      <span class="mmi"><i class="fa-solid fa-globe"></i> Global Marketplaces</span>
+      <span class="mmi"><i class="fa-brands fa-aws"></i> AWS</span>
+    </div>
+    <h4>The Challenge</h4>
+    <p>Amazon's global marketplaces required ML and infrastructure programs operating across regions, compliance boundaries, and multiple applied science and engineering teams — simultaneously improving latency, reducing costs, and strengthening regulatory compliance at massive scale.</p>
+    <h4>My Approach</h4>
+    <ul>
+      <li>Led concurrent global ML programs spanning applied science, product, and platform engineering teams</li>
+      <li>Translated abstract ML research goals into reliable, repeatable production outcomes with clear success criteria</li>
+      <li>Defined model evaluation criteria balancing technical performance with business and compliance constraints</li>
+      <li>Drove infrastructure modernization programs measurably reducing latency and costs across high-traffic systems</li>
+      <li>Built compliance-strengthening workflows embedded into ongoing engineering operations across regions</li>
+      <li>Maintained alignment between applied scientists, compliance teams, and executive stakeholders throughout</li>
+    </ul>
+    <h4>Impact</h4>
+    <div class="modal-mets">
+      <div class="mmbox"><div class="n">↓</div><div class="l">Latency — high-traffic marketplace systems</div></div>
+      <div class="mmbox"><div class="n">↓</div><div class="l">Infrastructure costs via modernization</div></div>
+      <div class="mmbox"><div class="n">↑</div><div class="l">Compliance posture across regions</div></div>
+    </div>
+    <h4>Key Insight</h4>
+    <p>The hardest part wasn't the ML — it was engineering shared agreement on what "good enough" means between applied scientists optimizing model metrics and compliance teams managing regulatory risk. Building and holding that definition steady over months of delivery is where the real program management value lives.</p>
+  </div>
+</div>
+
+<div class="modal-overlay" id="m2" onclick="closeMBg(event,'m2')">
+  <div class="modal">
+    <button class="mcls" onclick="closeM('m2')"><i class="fa-solid fa-xmark"></i></button>
+    <div class="mtag">BeyondTrust · Staff EPM · Oct 2025 – Present</div>
+    <h3>AI-Driven Identity Security & PAM Programs</h3>
+    <div class="mmeta">
+      <span class="mmi"><i class="fa-solid fa-calendar"></i> Current</span>
+      <span class="mmi"><i class="fa-solid fa-shield-halved"></i> Identity Security</span>
+    </div>
+    <h4>The Mission</h4>
+    <p>BeyondTrust is a global leader in privileged access management and identity security. The program mission: bridge AI strategy with cybersecurity engineering — ensuring intelligent systems scale efficiently while safeguarding digital trust and resilience for enterprise customers worldwide.</p>
+    <h4>Program Focus</h4>
+    <ul>
+      <li>Advancing AI-driven automation within privileged access management workflows</li>
+      <li>Designing programs that embed ML intelligence into identity security detection and response</li>
+      <li>Ensuring AI systems meet the security rigor required for enterprise environments</li>
+      <li>Bridging applied AI teams with cybersecurity engineering for cohesive, secure product delivery</li>
+      <li>Applying Amazon ML program patterns to the unique challenges of security AI</li>
+    </ul>
+    <h4>Why This Matters</h4>
+    <p>At BeyondTrust, the challenge is uniquely complex: the AI systems themselves must be trustworthy enough to protect other systems. That demands program leadership that goes beyond delivery — deep thinking about risk, trust, and the human systems that technology serves.</p>
+  </div>
+</div>
+
+<div class="modal-overlay" id="m3" onclick="closeMBg(event,'m3')">
+  <div class="modal">
+    <button class="mcls" onclick="closeM('m3')"><i class="fa-solid fa-xmark"></i></button>
+    <div class="mtag">Amazon · Compliance Engineering</div>
+    <h3>Compliance & Operational Resilience Programs</h3>
+    <div class="mmeta">
+      <span class="mmi"><i class="fa-solid fa-globe"></i> Multi-region</span>
+      <span class="mmi"><i class="fa-solid fa-scale-balanced"></i> Compliance Engineering</span>
+    </div>
+    <h4>The Challenge</h4>
+    <p>Operating ML-powered systems across global marketplaces means navigating a complex web of regional regulatory requirements while keeping systems resilient and automation-first. Manual compliance workflows simply don't scale at Amazon's pace — they had to be engineered out of the operating model.</p>
+    <h4>My Approach</h4>
+    <ul>
+      <li>Mapped compliance requirements across regions and built unified frameworks satisfying multiple regulatory contexts</li>
+      <li>Embedded automation into compliance workflows to eliminate manual toil and reduce human error risk</li>
+      <li>Established cross-functional review cadences keeping compliance and engineering in continuous alignment</li>
+      <li>Built operational resilience metrics into program health reviews — making resilience visible and measurable</li>
+    </ul>
+    <h4>The Outcome That Mattered</h4>
+    <p>Compliance became a program asset rather than a tax. Teams understood their compliance posture in real time, automation reduced the burden, and resilience became something we could measure, discuss, and continuously improve — not just hope for.</p>
+  </div>
+</div>
+
+<div class="modal-overlay" id="m4" onclick="closeMBg(event,'m4')">
+  <div class="modal">
+    <button class="mcls" onclick="closeM('m4')"><i class="fa-solid fa-xmark"></i></button>
+    <div class="mtag">PwC Canada · June 2020 – Sept 2022</div>
+    <h3>Enterprise Digital Transformation · PwC Canada</h3>
+    <div class="mmeta">
+      <span class="mmi"><i class="fa-solid fa-calendar"></i> 2 years 4 months</span>
+      <span class="mmi"><i class="fa-brands fa-microsoft"></i> .NET / Azure</span>
+      <span class="mmi"><i class="fa-brands fa-aws"></i> AWS</span>
+    </div>
+    <h4>The Role</h4>
+    <p>Senior Software Engineer, Manager at PwC Canada was the critical bridge role — combining hands-on technical delivery with team management and executive stakeholder communication. The role that made the leap to Senior TPM at Amazon not just possible, but natural.</p>
+    <h4>Key Contributions</h4>
+    <ul>
+      <li>Led engineering teams delivering cloud transformation programs for enterprise clients on AWS and Azure</li>
+      <li>Managed technical delivery timelines, stakeholder communication, and team development simultaneously</li>
+      <li>Applied .NET and cloud platform expertise to architect and review scalable enterprise solutions</li>
+      <li>Built the cross-functional leadership and executive communication capability that became a superpower at Amazon</li>
+    </ul>
+    <h4>Why It Matters</h4>
+    <p>PwC is where engineering expertise met program leadership. The ability to read code, understand architectural tradeoffs, and still align business stakeholders is rare — and it's what separates a program manager who coordinates from one who actually drives technical outcomes.</p>
+  </div>
+</div>
+
+<!-- ── SCRIPTS ─────────────────────────────────────── -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script>
+  AOS.init({ duration: 600, once: true, offset: 50, easing: 'ease-out-quad' });
+
+  // ── Scroll progress bar ──
+  const prog = document.getElementById('scroll-progress');
+  window.addEventListener('scroll', () => {
+    const h = document.documentElement;
+    const pct = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+    prog.style.width = pct + '%';
+  }, { passive: true });
+
+  // ── Dark mode toggle ──
+  const saved = localStorage.getItem('theme');
+  if (saved === 'dark') { document.body.classList.add('dark'); updateIcon(true); }
+  function toggleTheme() {
+    const isDark = document.body.classList.toggle('dark');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    updateIcon(isDark);
+  }
+  function updateIcon(dark) {
+    const ic = document.getElementById('theme-icon');
+    if (!ic) return;
+    ic.className = dark ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+  }
+
+  // ── Nav scroll highlight ──
+  const secs = document.querySelectorAll('section[id]');
+  const nls  = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let c = '';
+    secs.forEach(s => { if (window.scrollY >= s.offsetTop - 130) c = s.id; });
+    nls.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + c));
+  }, { passive: true });
+  function toggleNav() { document.getElementById('nl').classList.toggle('open'); }
+
+  // ── Skill bars ──
+  new IntersectionObserver(([e]) => {
+    if (e.isIntersecting) {
+      document.querySelectorAll('.sbar').forEach(b => {
+        b.style.width = (parseFloat(b.dataset.p) * 100) + '%';
+        b.classList.add('on');
+      });
+    }
+  }, { threshold: 0.2 }).observe(document.getElementById('skills-sect'));
+
+  // ── Counter animation ──
+  function animateCounter(el) {
+    const target = parseInt(el.dataset.target, 10);
+    const suffix = el.dataset.suffix || '';
+    const dur = 1200;
+    const start = performance.now();
+    function step(now) {
+      const t = Math.min((now - start) / dur, 1);
+      const ease = 1 - Math.pow(1 - t, 3);
+      el.textContent = Math.round(ease * target) + suffix;
+      if (t < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  const counters = document.querySelectorAll('.hc-count[data-target]');
+  let countersRan = false;
+  new IntersectionObserver(([e]) => {
+    if (e.isIntersecting && !countersRan) {
+      countersRan = true;
+      counters.forEach(c => animateCounter(c));
+    }
+  }, { threshold: 0.4 }).observe(document.getElementById('hero'));
+
+  // ── Modals ──
+  function openM(id)        { document.getElementById(id).classList.add('open'); document.body.style.overflow = 'hidden'; }
+  function closeM(id)       { document.getElementById(id).classList.remove('open'); document.body.style.overflow = ''; }
+  function closeMBg(e, id)  { if (e.target.id === id) closeM(id); }
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') document.querySelectorAll('.modal-overlay.open').forEach(m => { m.classList.remove('open'); document.body.style.overflow = ''; });
+  });
+</script>
+</body>
+</html>
